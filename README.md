@@ -1,4 +1,4 @@
-#LibFX 2
+# LibFX 2
 
 Your JavaFX projects, more simple, more beautiful.
 
