@@ -1,6 +1,10 @@
 package eu.iamgio.libfx.files;
 
+import com.sun.istack.internal.Nullable;
+
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Font chooser
@@ -10,26 +14,35 @@ public class FileChooser {
 
     /**
      * Opens a file chooser window
-     * @param description File chooser description
+     * @param title File chooser title
+     * @param multi <tt>true</tt> for multiple files
      * @param extensions Supported extensions
      * @return Choosen file
      */
-    public File choose(String description, String...extensions) {
-        String[] exts = new String[extensions.length];
-        description += " (";
-        StringBuilder descriptionBuilder = new StringBuilder(description);
-        for(int i = 0; i < extensions.length; i++) {
-            exts[i] = "*." + extensions[i].toUpperCase();
-            descriptionBuilder.append("*.").append(extensions[i].toUpperCase());
-            if(i != exts.length - 1) {
-                descriptionBuilder.append(", ");
-            }
-        }
-        description = descriptionBuilder.toString() + ")";
+    private List<File> choose(@Nullable String title, boolean multi, javafx.stage.FileChooser.ExtensionFilter...extensions) {
         javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
-        javafx.stage.FileChooser.ExtensionFilter extFilter = new javafx.stage.FileChooser.ExtensionFilter(
-                description, exts);
-        fileChooser.getExtensionFilters().addAll(extFilter);
-        return fileChooser.showOpenDialog(null);
+        if(title != null) fileChooser.setTitle(title);
+        fileChooser.getExtensionFilters().addAll(extensions);
+        return multi ? Arrays.asList(fileChooser.showOpenDialog(null)) : fileChooser.showOpenMultipleDialog(null);
+    }
+
+    /**
+     * Opens a file chooser window
+     * @param title File chooser title
+     * @param extensions Supported extensions
+     * @return Choosen file
+     */
+    public File choose(@Nullable String title, javafx.stage.FileChooser.ExtensionFilter...extensions) {
+        return choose(title, false, extensions).get(0);
+    }
+
+    /**
+     * Opens a file chooser window to open multiple files
+     * @param title File chooser title
+     * @param extensions Supported extensions
+     * @return Choosen file(s)
+     */
+    public List<File> chooseMulti(@Nullable String title, javafx.stage.FileChooser.ExtensionFilter...extensions) {
+        return choose(title, true, extensions);
     }
 }
