@@ -60,6 +60,16 @@ public class FXStage {
     }
 
     /**
+     * Sets the title of the stage
+     * @param title New title
+     * @return this for concatenating
+     */
+    public FXStage withTitle(String title) {
+        stage.setTitle(title);
+        return this;
+    }
+
+    /**
      * Shows the stage
      * @see Stage#show()
      */
