@@ -23,7 +23,7 @@ public class FileChooser {
         javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
         if(title != null) fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().addAll(extensions);
-        return multi ? Arrays.asList(fileChooser.showOpenDialog(null)) : fileChooser.showOpenMultipleDialog(null);
+        return multi ? fileChooser.showOpenMultipleDialog(null) : Arrays.asList(fileChooser.showOpenDialog(null));
     }
 
     /**
