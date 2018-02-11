@@ -76,4 +76,11 @@ public class FXStage {
     public void show() {
         stage.show();
     }
+
+    /**
+     * @return Normal Stage
+     */
+    public Stage toStage() {
+        return stage;
+    }
 }
