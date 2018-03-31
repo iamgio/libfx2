@@ -14,7 +14,7 @@ public class FontLoader {
      * @param path Path to the file
      * @param size Font size
      */
-    public void load(Class<?> clazz, String path, int size) {
-        Font.loadFont(clazz.getResource(path).toExternalForm(), size);
+    public Font load(Class<?> clazz, String path, int size) {
+        return Font.loadFont(clazz.getResource(path).toExternalForm(), size);
     }
 }
