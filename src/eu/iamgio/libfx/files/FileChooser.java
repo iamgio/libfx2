@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Font chooser
+ * File chooser
  * @author Gio
  */
 public class FileChooser {
