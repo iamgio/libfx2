@@ -12,7 +12,7 @@ public class FXStage {
     private Stage stage;
     private FXApplication application;
 
-    FXStage(Stage stage, FXApplication application) {
+    public FXStage(Stage stage, FXApplication application) {
         this.stage = stage;
         this.application = application;
     }
