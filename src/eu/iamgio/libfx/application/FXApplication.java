@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
@@ -53,9 +54,11 @@ public abstract class FXApplication extends Application {
      */
     public Pane loadRoot(String path, ResourceBundle bundle) throws FXException {
         try {
+            URL url = getClass().getResource(path);
             FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(url);
             loader.setResources(bundle);
-            return loader.load(getClass().getResource(path).openStream());
+            return loader.load(url.openStream());
         }
         catch(IOException e) {
             throw new FXException("Cannot load FXML from " + path);
