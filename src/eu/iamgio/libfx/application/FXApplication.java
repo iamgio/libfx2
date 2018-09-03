@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * Class that must be extended by main class in a JavaFX application
@@ -38,6 +39,23 @@ public abstract class FXApplication extends Application {
     public Pane loadRoot(String path) throws FXException {
         try {
             return FXMLLoader.load(getClass().getResource(path));
+        }
+        catch(IOException e) {
+            throw new FXException("Cannot load FXML from " + path);
+        }
+    }
+
+    /**
+     * Loads a FXML file
+     * @param path Path to the .fxml file
+     * @return FXML as {@link Pane}
+     * @throws FXException If the file cannot be loaded
+     */
+    public Pane loadRoot(String path, ResourceBundle bundle) throws FXException {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
+            return loader.load(getClass().getResource(path).openStream());
         }
         catch(IOException e) {
             throw new FXException("Cannot load FXML from " + path);
