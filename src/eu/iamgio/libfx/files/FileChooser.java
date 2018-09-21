@@ -12,6 +12,14 @@ import java.util.List;
  */
 public class FileChooser {
 
+    private File folder;
+
+    public FileChooser(File folder) {
+        this.folder = folder;
+    }
+
+    public FileChooser() {}
+
     /**
      * Opens a file chooser window
      * @param title File chooser title
@@ -21,6 +29,7 @@ public class FileChooser {
      */
     private List<File> choose(@Nullable String title, boolean multi, javafx.stage.FileChooser.ExtensionFilter...extensions) {
         javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+        if(folder != null) fileChooser.setInitialDirectory(folder);
         if(title != null) fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().addAll(extensions);
         return multi ? fileChooser.showOpenMultipleDialog(null) : Arrays.asList(fileChooser.showOpenDialog(null));
