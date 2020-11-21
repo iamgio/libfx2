@@ -1,7 +1,5 @@
 package eu.iamgio.libfx.files;
 
-import com.sun.istack.internal.Nullable;
-
 import java.io.File;
 
 /**
@@ -24,7 +22,7 @@ public class FileCreator {
      * @param extensions Supported extensions
      * @return Choosen file
      */
-    public File create(@Nullable String title, javafx.stage.FileChooser.ExtensionFilter...extensions) {
+    public File create(String title, javafx.stage.FileChooser.ExtensionFilter...extensions) {
         javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
         if(folder != null) fileChooser.setInitialDirectory(folder);
         if(title != null) fileChooser.setTitle(title);

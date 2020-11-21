@@ -1,7 +1,5 @@
 package eu.iamgio.libfx.files;
 
-import com.sun.istack.internal.Nullable;
-
 import java.io.File;
 
 /**
@@ -16,7 +14,7 @@ public class DirectoryChooser {
      * @param initialDir Starting directory
      * @return Choosen directory
      */
-    public File choose(String name, @Nullable File initialDir) {
+    public File choose(String name, File initialDir) {
         javafx.stage.DirectoryChooser chooser = new javafx.stage.DirectoryChooser();
         chooser.setTitle(name);
         if(initialDir != null) chooser.setInitialDirectory(initialDir);

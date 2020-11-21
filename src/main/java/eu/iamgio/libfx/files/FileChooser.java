@@ -1,7 +1,5 @@
 package eu.iamgio.libfx.files;
 
-import com.sun.istack.internal.Nullable;
-
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +25,7 @@ public class FileChooser {
      * @param extensions Supported extensions
      * @return Choosen file
      */
-    private List<File> choose(@Nullable String title, boolean multi, javafx.stage.FileChooser.ExtensionFilter...extensions) {
+    private List<File> choose(String title, boolean multi, javafx.stage.FileChooser.ExtensionFilter...extensions) {
         javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
         if(folder != null) fileChooser.setInitialDirectory(folder);
         if(title != null) fileChooser.setTitle(title);
@@ -41,7 +39,7 @@ public class FileChooser {
      * @param extensions Supported extensions
      * @return Choosen file
      */
-    public File choose(@Nullable String title, javafx.stage.FileChooser.ExtensionFilter...extensions) {
+    public File choose(String title, javafx.stage.FileChooser.ExtensionFilter...extensions) {
         return choose(title, false, extensions).get(0);
     }
 
@@ -51,7 +49,7 @@ public class FileChooser {
      * @param extensions Supported extensions
      * @return Choosen file(s)
      */
-    public List<File> chooseMulti(@Nullable String title, javafx.stage.FileChooser.ExtensionFilter...extensions) {
+    public List<File> chooseMulti(String title, javafx.stage.FileChooser.ExtensionFilter...extensions) {
         return choose(title, true, extensions);
     }
 }
